@@ -1,11 +1,21 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const UserDetails = () => {
   const { userId } = useParams();
   const [data, setData] = useState({});
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.get("firstName"));
+  console.log(searchParams.get("age"));
+  const reset = () => {
+    setSearchParams({ firstName: "Keshaun" });
+    setSearchParams({ age: 34 });
+  };
+  
+  
+  
   useEffect(() => {
     async function getData() {
       let getapi = await fetch(
